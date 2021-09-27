@@ -15,12 +15,15 @@ class UserManager
     int getNewUserId();
     User enterNewUserDetails();
 public:
-    //UserManager();
-    bool ifUserIsLoggedIn();
+    UserManager()
+    {
+        idOfLoggedInUser=0;
+    }
+    bool isUserLoggedIn();
     void userRegistration();
-    int userLogin ();
-    //void listAllUsers();
-   // void changePasswordOfLoggedInUser();
+    int userLogin();
+    void listAllUsers();
+   void changePasswordOfLoggedInUser();
    // void setIdOfLoggedInUser();
     void userLogout();
    // int getIdOfLoggedInUser();

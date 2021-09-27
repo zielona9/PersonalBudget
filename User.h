@@ -1,3 +1,5 @@
+#ifndef USER_H
+#define USER_H
 #include <iostream>
 
 using namespace std;
@@ -21,3 +23,4 @@ public:
     string getName();
     string getSurname();
 };
+#endif

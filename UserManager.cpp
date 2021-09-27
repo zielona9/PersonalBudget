@@ -138,3 +138,41 @@ void UserManager::userLogout()
     idOfLoggedInUser=0;
     cout<<"Correctly logged out"<<endl;
 }
+void UserManager::listAllUsers()
+{
+    for(int i=0; i<users.size();i++)
+    {
+        cout<<users[i].getId()<<endl;
+        cout<<users[i].getName()<<endl;
+        cout<<users[i].getSurname()<<endl;
+        cout<<users[i].getLogin()<<endl;
+        cout<<users[i].getPassword()<<endl;
+    }
+}
+void UserManager::changePasswordOfLoggedInUser()
+{
+  string newPassword = "";
+    cout << "Enter new password: ";
+
+    newPassword = SupportingMethods().loadLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getId()== idOfLoggedInUser)
+        {
+            itr -> setPassword(newPassword);
+            cout << "The password has been changed" << endl << endl;
+            system("pause");
+        }
+    }
+
+   // plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+
+}
+bool UserManager::isUserLoggedIn()
+{
+     if(idOfLoggedInUser>0)
+        return true;
+    else
+        return false;
+}

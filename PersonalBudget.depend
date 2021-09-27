@@ -2,16 +2,36 @@
 1632646841 source:c:\programista\personalbudget\personalbudget\user.cpp
 	"User.h"
 
-1632646841 c:\programista\personalbudget\personalbudget\user.h
+1632730252 c:\programista\personalbudget\personalbudget\user.h
 	<iostream>
 
-1632646841 source:c:\programista\personalbudget\personalbudget\main.cpp
+1632730682 source:c:\programista\personalbudget\personalbudget\main.cpp
 	<iostream>
 	"User.h"
+	"PersonalBudget.h"
 
 1632672969 source:c:\programista\personalbudget\personalbudget\supportingmethods.cpp
 	"SupportingMethods.h"
 
 1632719976 c:\programista\personalbudget\personalbudget\supportingmethods.h
 	<iostream>
+
+1632730538 source:c:\programista\personalbudget\personalbudget\usermanager.cpp
+	"UserManager.h"
+
+1632732232 c:\programista\personalbudget\personalbudget\usermanager.h
+	<iostream>
+	<vector>
+	"User.h"
+	"SupportingMethods.h"
+
+1632730860 source:c:\programista\personalbudget\personalbudget\personalbudget.cpp
+	"PersonalBudget.h"
+
+1632730646 c:\programista\personalbudget\personalbudget\personalbudget.h
+	<iostream>
+	<vector>
+	"User.h"
+	"SupportingMethods.h"
+	"UserManager.h"
 

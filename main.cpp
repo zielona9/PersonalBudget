@@ -1,11 +1,11 @@
 #include <iostream>
 #include "User.h"
+#include "PersonalBudget.h"
 using namespace std;
 
 int main()
 {
-    User user;
-    user.setId(1);
-    cout<<user.getId();
+   PersonalBudget personalBudget;
+   personalBudget.selectingOptionInMainMenu();
     return 0;
 }
