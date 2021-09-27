@@ -1,7 +1,17 @@
 # depslib dependency file v1.0
-1632646577 source:c:\programista\personalbudget\personalbudget\user.cpp
+1632646841 source:c:\programista\personalbudget\personalbudget\user.cpp
 	"User.h"
 
-1632646577 c:\programista\personalbudget\personalbudget\user.h
+1632646841 c:\programista\personalbudget\personalbudget\user.h
+	<iostream>
+
+1632646841 source:c:\programista\personalbudget\personalbudget\main.cpp
+	<iostream>
+	"User.h"
+
+1632672969 source:c:\programista\personalbudget\personalbudget\supportingmethods.cpp
+	"SupportingMethods.h"
+
+1632719976 c:\programista\personalbudget\personalbudget\supportingmethods.h
 	<iostream>
 
