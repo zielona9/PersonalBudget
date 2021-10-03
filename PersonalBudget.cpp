@@ -17,6 +17,9 @@ void PersonalBudget::selectingOptionInMainMenu()
             case '2':
                 userLogin();
                 break;
+            case '3':
+                userManager.listAllUsers();
+                break;
             case '9':
                 exit(0);
                 menu=false;

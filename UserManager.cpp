@@ -9,6 +9,7 @@ char UserManager::selectOptionFromMainMenu()
     cout << "---------------------------" << endl;
     cout << "1. Registration" << endl;
     cout << "2. Sign in" << endl;
+    cout<<"3. listAllUsers"<<endl;
     cout << "9. End of programme" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
@@ -47,7 +48,7 @@ char UserManager::selectOptionFromMainMenu()
     return choice;
  }
 
-bool UserManager::ifLoginExists(string login)
+bool UserManager::doesLoginExists(string login)
 {
    for(int i=0; i< users.size();i++)
     {
@@ -77,7 +78,7 @@ User UserManager::enterNewUserDetails()
         cout <<  "Enter your login:";
         cin>>login;
         user.setLogin(login);
-    } while (ifLoginExists(user.getLogin()) == true);
+    } while (doesLoginExists(user.getLogin()) == true);
 
     cout << "Enter your password: ";
     cin>>password;
@@ -93,7 +94,7 @@ User UserManager::enterNewUserDetails()
     User user = enterNewUserDetails();
 
     users.push_back(user);
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    fileWithUsers.addUserToFile(user);
 
     cout << endl << "Account successfully created" << endl << endl;
     system("pause");
@@ -148,6 +149,7 @@ void UserManager::listAllUsers()
         cout<<users[i].getLogin()<<endl;
         cout<<users[i].getPassword()<<endl;
     }
+    system("pause");
 }
 void UserManager::changePasswordOfLoggedInUser()
 {
@@ -169,6 +171,8 @@ void UserManager::changePasswordOfLoggedInUser()
    // plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 
 }
+
+
 bool UserManager::isUserLoggedIn()
 {
      if(idOfLoggedInUser>0)

@@ -1,0 +1,16 @@
+<Users>
+<User>
+<UserId>1</UserId>
+<Name>Ula</Name>
+<Surname>Oniszk</Surname>
+<Login>Ula</Login>
+<Password>123345</Password>
+</User>
+<User>
+<UserId>2</UserId>
+<Name>Lukasz</Name>
+<Surname>Oniszk</Surname>
+<Login>Luki</Login>
+<Password>54321</Password>
+</User>
+</Users>
