@@ -39,21 +39,84 @@ int SupportingMethods::convertStringToInt(string number)
 
     return numberInt;
 }
+bool SupportingMethods::verifyThatIsNumber(string &number)
+{
+    int countDot=0;
+    for(int i=0; i<number.size(); i++)
+    {
+        if(!isdigit(number[i]))
+        {
+            if (number[i]==',')
+            {
+                number[i]='.';
+                countDot++;
+            }
+            else if(number[i]=='.')
+                countDot++;
+            if(number[i]!='.'||countDot>1)
+            {
+                cout<<"The correct value of the number is not given."<<endl;
+                return false;
+            }
+        }
+    }
+    return true;
+}
+string SupportingMethods::convertDoubleToString(double number)
+{
+    string numberString;
+    numberString=to_string(number);
+    numberString.erase(numberString.find(".")+3,numberString.size()-numberString.find(".")-3);
+    return numberString;
+}
+double SupportingMethods::convertStringValueToDouble(string number)
+{
+    double numberDouble;
 
-  string SupportingMethods::convertDateToString(Date date)
+    if(verifyThatIsNumber(number)==true)
+        numberDouble=stod(number);
+
+    return numberDouble;
+}
+
+string SupportingMethods::convertDateToString(Date date)
+{
+    string dateString;
+    string monthString;
+    string dayString;
+    if(date.getDay()<10)
+        dayString="0"+ convertIntToString(date.getDay());
+    else
+        dayString= convertIntToString(date.getDay());
+    if(date.getMonth()<10)
+        monthString="0"+convertIntToString(date.getMonth());
+    else
+        monthString=convertIntToString(date.getMonth());
+    dateString=convertIntToString(date.getYear())+"-"+monthString+"-"+dayString;
+    return dateString;
+}
+Date SupportingMethods::convertStringToDate(string dateString)
+{
+    Date date;
+
+    date.setYear(convertStringToInt(dateString.substr(0,4)));
+    date.setMonth(convertStringToInt(dateString.substr(5,2)));
+    date.setDay(convertStringToInt(dateString.substr(8,2)));
+
+    return date;
+
+}
+ int SupportingMethods::convertDateToInt(Date date)
   {
-      string dateString;
-      dateString=SupportingMethods().convertIntToString(date.getYear())+"-"+SupportingMethods().convertIntToString(date.getMonth())+"-"+SupportingMethods().convertIntToString(date.getDay());
-      return dateString;
+      int dateInt;
+      dateInt=date.getYear()*10000+date.getMonth()*100+date.getDay();
+      return dateInt;
   }
-  Date SupportingMethods::convertStringToDate(string dateString)
+ Date SupportingMethods::convertIntToDate(int dateInt)
   {
       Date date;
-
-      date.setYear(convertStringToInt(dateString.substr(0,4)));
-      date.setMonth(convertStringToInt(dateString.substr(4,2)));
-      date.setDay(convertStringToInt(dateString.substr(6,2)));
-
+      date.setDay(dateInt%100);
+      date.setMonth(dateInt%10000-date.getDay());
+      date.setYear((dateInt-date.getDay()-date.getMonth())/10000);
       return date;
-
   }

@@ -10,50 +10,51 @@
 	"User.h"
 	"PersonalBudget.h"
 
-1633259324 source:c:\programista\personalbudget\personalbudget\supportingmethods.cpp
+1633589018 source:c:\programista\personalbudget\personalbudget\supportingmethods.cpp
 	"SupportingMethods.h"
 
-1633259639 c:\programista\personalbudget\personalbudget\supportingmethods.h
+1633589006 c:\programista\personalbudget\personalbudget\supportingmethods.h
 	<iostream>
 	<sstream>
 	<algorithm>
 	<string>
 	"Date.h"
 
-1632857418 source:c:\programista\personalbudget\personalbudget\usermanager.cpp
+1633522564 source:c:\programista\personalbudget\personalbudget\usermanager.cpp
 	"UserManager.h"
 
-1632857391 c:\programista\personalbudget\personalbudget\usermanager.h
+1633370317 c:\programista\personalbudget\personalbudget\usermanager.h
 	<iostream>
 	<vector>
 	"User.h"
 	"SupportingMethods.h"
 	"FileWithUsers.h"
 
-1632823211 source:c:\programista\personalbudget\personalbudget\personalbudget.cpp
+1633522398 source:c:\programista\personalbudget\personalbudget\personalbudget.cpp
 	"PersonalBudget.h"
 
-1632732490 c:\programista\personalbudget\personalbudget\personalbudget.h
+1633372303 c:\programista\personalbudget\personalbudget\personalbudget.h
 	<iostream>
 	<vector>
 	"User.h"
 	"SupportingMethods.h"
 	"UserManager.h"
+	"FinancesManager.h"
 
-1632822311 c:\programista\personalbudget\personalbudget\filewithusers.h
+1633272339 c:\programista\personalbudget\personalbudget\filewithusers.h
 	<iostream>
 	<vector>
 	"Markup.h"
 	"User.h"
 	"SupportingMethods.h"
 
-1632734022 c:\programista\personalbudget\personalbudget\markup.h
+1633272339 c:\programista\personalbudget\personalbudget\markup.h
 	<stdlib.h>
 	<string.h>
 	<string>
 	<afx.h>
 
-1632734022 source:c:\programista\personalbudget\personalbudget\markup.cpp
+1633272339 source:c:\programista\personalbudget\personalbudget\markup.cpp
 	<stdio.h>
 	"Markup.h"
 	<errno.h>
@@ -61,67 +62,89 @@
 	<windows.h>
 	<mbstring.h>
 
-1632826763 source:c:\programista\personalbudget\personalbudget\filewithusers.cpp
+1633272339 source:c:\programista\personalbudget\personalbudget\filewithusers.cpp
 	"FileWithUsers.h"
 
-1632996451 source:c:\programista\personalbudget\personalbudget\expense.cpp
+1633592681 source:c:\programista\personalbudget\personalbudget\expense.cpp
 	"Expense.h"
 
-1632828450 source:c:\programista\personalbudget\personalbudget\financesmanager.cpp
+1633589280 source:c:\programista\personalbudget\personalbudget\financesmanager.cpp
+	"FinancesManager.h"
 
-1632993155 source:c:\programista\personalbudget\personalbudget\revenue.cpp
+1633272339 source:c:\programista\personalbudget\personalbudget\revenue.cpp
 	"Revenue.h"
 
-1632918657 source:c:\programista\personalbudget\personalbudget\date.cpp
+1633272339 source:c:\programista\personalbudget\personalbudget\date.cpp
 	"Date.h"
 
-1632918657 c:\programista\personalbudget\personalbudget\date.h
+1633272339 c:\programista\personalbudget\personalbudget\date.h
 	<iostream>
 
-1632993155 c:\programista\personalbudget\personalbudget\revenue.h
-	<iostream>
-	"Date.h"
-	"Finance.h"
-
-1633002462 c:\programista\personalbudget\personalbudget\finance.h
-	<iostream>
-	"Date.h"
-
-1632993233 source:c:\programista\personalbudget\personalbudget\finance.cpp
-	"Finance.h"
-
-1632996451 c:\programista\personalbudget\personalbudget\expense.h
+1633272339 c:\programista\personalbudget\personalbudget\revenue.h
 	<iostream>
 	"Date.h"
 	"Finance.h"
 
-1633259372 source:c:\programista\personalbudget\personalbudget\filewithexpenses.cpp
+1633590937 c:\programista\personalbudget\personalbudget\finance.h
+	<iostream>
+	"Date.h"
+
+1633588925 source:c:\programista\personalbudget\personalbudget\finance.cpp
+	"Finance.h"
+
+1633592536 c:\programista\personalbudget\personalbudget\expense.h
+	<iostream>
+	<vector>
+	<algorithm>
+	<cstdio>
+	<cstdlib>
+	"Date.h"
+	"Finance.h"
+
+1633589090 source:c:\programista\personalbudget\personalbudget\filewithexpenses.cpp
 	"FileWithExpenses.h"
 
-1633003011 c:\programista\personalbudget\personalbudget\filewithexpenses.h
+1633336644 c:\programista\personalbudget\personalbudget\filewithexpenses.h
 	<iostream>
 	<vector>
 	"Markup.h"
 	"Expense.h"
 	"SupportingMethods.h"
 
-1633259574 source:c:\programista\personalbudget\personalbudget\filewithrevenue.cpp
+1633589156 source:c:\programista\personalbudget\personalbudget\filewithrevenue.cpp
 	"FileWithRevenue.h"
 
-1633259465 c:\programista\personalbudget\personalbudget\filewithrevenue.h
+1633336644 c:\programista\personalbudget\personalbudget\filewithrevenue.h
 	<iostream>
 	<vector>
 	"Markup.h"
 	"Revenue.h"
 	"SupportingMethods.h"
 
-1633271925 source:c:\programista\personalbudget\personalbudget\datemanager.cpp
+1633544857 source:c:\programista\personalbudget\personalbudget\datemanager.cpp
 	"DateManager.h"
 
-1633271976 c:\programista\personalbudget\personalbudget\datemanager.h
+1633519829 c:\programista\personalbudget\personalbudget\datemanager.h
 	<iostream>
 	<windows.h>
 	<winbase.h>
 	"Date.h"
 	"SupportingMethods.h"
+
+1633592681 c:\programista\personalbudget\personalbudget\financesmanager.h
+	<iostream>
+	<vector>
+	<cstdio>
+	<algorithm>
+	"User.h"
+	"SupportingMethods.h"
+	"FileWithUsers.h"
+	"Revenue.h"
+	"FileWithRevenue.h"
+	"Expense.h"
+	"FileWithExpenses.h"
+	"Finance.h"
+	"Date.h"
+	"DateManager.h"
+	"UserManager.h"
 

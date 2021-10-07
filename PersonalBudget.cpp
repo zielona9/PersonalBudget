@@ -36,10 +36,11 @@ void PersonalBudget::userLogin()
 {
     char choice;
     bool login=true;
-    userManager.userLogin();
+    int userId;
+    userId=userManager.userLogin();
     if(userManager.isUserLoggedIn())
     {
-        //adresatMenedzer= new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+        financesManager= new FinancesManager(userId);
 
     while(login==true)
       {
@@ -47,25 +48,27 @@ void PersonalBudget::userLogin()
          switch (choice)
             {
             case '1':
-                //
+                financesManager->addRevenue();
                 break;
             case '2':
-                //adresatMenedzer->wyszukajAdresatowPoImieniu();
+                financesManager->addExpense();
                 break;
             case '3':
-              //adresatMenedzer->wyszukajAdresatowPoNazwisku();
+              financesManager->currentMonthBalance();
                 break;
             case '4':
-                 //adresatMenedzer->wyswietlWszystkichAdresatow();
+                 financesManager->balanceFromPreviousMonth();
                 break;
             case '5':
-                 // adresatMenedzer->usunAdresata();
+                 financesManager->balanceForSelectedPeriod();
                 break;
             case '6':
                 userManager.changePasswordOfLoggedInUser();
                 break;
             case '7':
                 userManager.userLogout();
+                delete financesManager;
+                financesManager=NULL;
                 login=false;
                 break;
             }

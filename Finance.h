@@ -8,17 +8,17 @@ using namespace std;
 class Finance
 {
     int idUser;
-    int vallue;
+    double value;
     string category;
-    Date date;
+    int date;
 public:
     void setIdUser(int newIdUser);
-    void setVallue(int newVallue);
+    void setValue(double newValue);
     void setCategory(string newCategory);
-    void setDate(Date newDate);
+    void setDate(int newDate);
     int getIdUser();
-    int getValue();
+    double getValue();
     string getCategory();
-    Date getDate();
+    int getDate();
 };
 #endif

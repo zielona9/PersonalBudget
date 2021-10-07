@@ -12,5 +12,6 @@ class FileWithRevenue
 public:
     vector <Revenue> loadRevenuesFromFile(int userId);
     void addRevenueToFile(Revenue revenue);
+    int getIdOfLastIdRevenue();
 };
 #endif

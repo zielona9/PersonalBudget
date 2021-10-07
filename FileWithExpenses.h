@@ -12,5 +12,6 @@ class FileWithExpenses
 public:
     vector <Expense> loadExpensesFromFile(int userId);
     void addExpenseToFile(Expense revenue);
+    int getIdOfLastIdExpense();
 };
 #endif

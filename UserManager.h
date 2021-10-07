@@ -22,14 +22,16 @@ public:
         idOfLoggedInUser=0;
         users=fileWithUsers.loadUsersFromFile();
     }
+    void setIdOfLoggedInUser(int userId);
     bool isUserLoggedIn();
+
     void userRegistration();
     int userLogin();
     void listAllUsers();
-   void changePasswordOfLoggedInUser();
-   // void setIdOfLoggedInUser();
+    void changePasswordOfLoggedInUser();
     void userLogout();
-   // int getIdOfLoggedInUser();
+
+    int getIdOfLoggedInUser();
     char selectOptionFromMainMenu();
     char selectOptionFromUserMenu();
 

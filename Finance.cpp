@@ -4,15 +4,15 @@ void Finance::setIdUser(int newIdUser)
 {
    idUser=newIdUser;
 }
-void Finance::setVallue(int newVallue)
+void Finance::setValue(double newValue)
 {
-    vallue=newVallue;
+    value=newValue;
 }
 void Finance::setCategory(string newCategory)
 {
     category=newCategory;
 }
-void Finance::setDate(Date newDate)
+void Finance::setDate(int newDate)
 {
     date=newDate;
 }
@@ -20,15 +20,15 @@ int Finance::getIdUser()
 {
     return idUser;
 }
-int Finance::getValue()
+double Finance::getValue()
 {
-    return vallue;
+    return value;
 }
 string Finance::getCategory()
 {
     return category;
 }
-Date Finance::getDate()
+int Finance::getDate()
 {
     return date;
 }

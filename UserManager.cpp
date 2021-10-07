@@ -118,9 +118,13 @@ int UserManager::userLogin ()
 
                 if (users[i].getPassword() == password)
                 {
+
                     cout << endl << "You have logged in" << endl << endl;
+
+                    idOfLoggedInUser=users[i].getId();
+                    setIdOfLoggedInUser( users[i].getId());
+
                     system("pause");
-                    idOfLoggedInUser= users[i].getId();
                     return idOfLoggedInUser;
                 }
             }
@@ -130,7 +134,7 @@ int UserManager::userLogin ()
         }
 
     }
-    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    cout << "There is no user with this login" << endl << endl;
     system("pause");
     return 0;
 }
@@ -179,4 +183,14 @@ bool UserManager::isUserLoggedIn()
         return true;
     else
         return false;
+}
+
+void UserManager::setIdOfLoggedInUser(int userId)
+{
+    idOfLoggedInUser=userId;
+}
+
+int UserManager::getIdOfLoggedInUser()
+{
+    return idOfLoggedInUser;
 }

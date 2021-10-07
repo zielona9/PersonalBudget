@@ -17,7 +17,7 @@ Date DateManager::downloadUserDate()
     do
     {
         cout<<"Enter date in format yyyy-mm-dd ";
-        cin>>userDate;
+         cin>>userDate;
     }
     while(isDateFormatCorrect(userDate)==false);
 
@@ -38,7 +38,7 @@ bool DateManager::checkDateEnterCorectly(Date date)
         return false;
     else if(date.getMonth()<1||date.getMonth()>12)
         return false;
-    else if(date.getDay()<1||date.getDay()>numberOfDaysInMonth(date))
+    else if(date.getDay()<1||date.getDay()>numberOfDaysInMonth(date.getYear(),date.getMonth()))
         return false;
     else
         return true;
@@ -46,6 +46,12 @@ bool DateManager::checkDateEnterCorectly(Date date)
 bool DateManager::isDateFormatCorrect(string dateString)
 {
     Date date;
+    if(dateString.size()!=10)
+    {
+            cout<<"Incorrect data were entered. Please enter the date again."<<endl;
+            return false;
+        }
+
     for(int i=0; i<dateString.size(); i++)
     {
         if((i!=4&& i!=7 && isdigit(dateString[i])==false)||((i==4||i==7)&&dateString[i]!='-'))
@@ -63,10 +69,10 @@ bool DateManager::isDateFormatCorrect(string dateString)
     else
         return true;
 }
-int DateManager::numberOfDaysInMonth(Date date)
+int DateManager::numberOfDaysInMonth(int year, int month)
 {
     int numberOfDays;
-    switch(date.getMonth())
+    switch(month)
     {
     case 1:case 3:case 5:case 7:case 8:case 10:case 12:
         numberOfDays=31;
@@ -76,7 +82,7 @@ int DateManager::numberOfDaysInMonth(Date date)
         break;
     case 2:
     {
-        if(isThisLeapYear(date.getYear())==true)
+        if(isThisLeapYear(year)==true)
             numberOfDays=29;
         else
             numberOfDays=28;
@@ -84,4 +90,38 @@ int DateManager::numberOfDaysInMonth(Date date)
     }
     }
     return numberOfDays;
+}
+bool DateManager::isGivenRangeContaintGivenDate(Date dateGiven, Date dateStart, Date dateEnd)
+{
+  if(checkStartDateIsSmallerThanEndDate(dateStart,dateGiven)==true)
+  {
+     if(checkStartDateIsSmallerThanEndDate(dateGiven,dateEnd)==true)
+        return true;
+     else
+        return false;
+  }
+  else
+    return false;
+}
+
+bool DateManager::checkStartDateIsSmallerThanEndDate(Date dateStart, Date dateEnd)
+{
+    if(dateStart.getYear()==dateEnd.getYear())
+    {
+        if(dateStart.getMonth()==dateEnd.getMonth())
+        {
+            if(dateStart.getDay()<=dateEnd.getDay())
+                return true;
+            else
+                return false;
+        }
+        else if(dateStart.getMonth()<dateEnd.getMonth())
+            return true;
+        else
+            return false;
+    }
+    else if(dateStart.getYear()<dateEnd.getYear())
+    return true;
+    else
+        return false;
 }
