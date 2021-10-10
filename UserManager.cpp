@@ -9,7 +9,7 @@ char UserManager::selectOptionFromMainMenu()
     cout << "---------------------------" << endl;
     cout << "1. Registration" << endl;
     cout << "2. Sign in" << endl;
-    cout<<"3. listAllUsers"<<endl;
+    cout << "3. listAllUsers" <<endl;
     cout << "9. End of programme" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
@@ -18,17 +18,17 @@ char UserManager::selectOptionFromMainMenu()
     return choice;
 }
 
- int UserManager::getNewUserId()
- {
-     if (users.empty() == true)
+int UserManager::getNewUserId()
+{
+    if (users.empty() == true)
         return 1;
     else
         return users.back().getId() + 1;
- }
+}
 
- char UserManager::selectOptionFromUserMenu()
- {
-      char choice;
+char UserManager::selectOptionFromUserMenu()
+{
+    char choice;
 
     system("cls");
     cout << " >>> USER MENU <<<" << endl;
@@ -46,11 +46,11 @@ char UserManager::selectOptionFromMainMenu()
     choice = SupportingMethods::loadCharacter();
 
     return choice;
- }
+}
 
 bool UserManager::doesLoginExists(string login)
 {
-   for(int i=0; i< users.size();i++)
+    for(int i=0; i< users.size(); i++)
     {
         if(users[i].getLogin()==login)
         {
@@ -78,7 +78,8 @@ User UserManager::enterNewUserDetails()
         cout <<  "Enter your login:";
         cin>>login;
         user.setLogin(login);
-    } while (doesLoginExists(user.getLogin()) == true);
+    }
+    while (doesLoginExists(user.getLogin()) == true);
 
     cout << "Enter your password: ";
     cin>>password;
@@ -89,8 +90,8 @@ User UserManager::enterNewUserDetails()
 
 }
 
- void UserManager::userRegistration()
- {
+void UserManager::userRegistration()
+{
     User user = enterNewUserDetails();
 
     users.push_back(user);
@@ -98,7 +99,7 @@ User UserManager::enterNewUserDetails()
 
     cout << endl << "Account successfully created" << endl << endl;
     system("pause");
- }
+}
 int UserManager::userLogin ()
 {
     string login = "", password = "";
@@ -145,7 +146,7 @@ void UserManager::userLogout()
 }
 void UserManager::listAllUsers()
 {
-    for(int i=0; i<users.size();i++)
+    for(int i=0; i<users.size(); i++)
     {
         cout<<users[i].getId()<<endl;
         cout<<users[i].getName()<<endl;
@@ -157,11 +158,11 @@ void UserManager::listAllUsers()
 }
 void UserManager::changePasswordOfLoggedInUser()
 {
-  string newPassword = "";
+    string newPassword = "";
     cout << "Enter new password: ";
 
     newPassword = SupportingMethods().loadLine();
-
+    User user;
     for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
     {
         if (itr -> getId()== idOfLoggedInUser)
@@ -172,14 +173,13 @@ void UserManager::changePasswordOfLoggedInUser()
         }
     }
 
-   // plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+    fileWithUsers.changePasswordInFile(idOfLoggedInUser,newPassword);
 
 }
 
-
 bool UserManager::isUserLoggedIn()
 {
-     if(idOfLoggedInUser>0)
+    if(idOfLoggedInUser>0)
         return true;
     else
         return false;

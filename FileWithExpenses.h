@@ -5,13 +5,16 @@
 #include "Markup.h"
 #include "Expense.h"
 #include "SupportingMethods.h"
+#include "TextFile.h"
 using namespace std;
-
-class FileWithExpenses
+class TextFile;
+class FileWithExpenses : public TextFile
 {
+
 public:
-    vector <Expense> loadExpensesFromFile(int userId);
-    void addExpenseToFile(Expense revenue);
+   FileWithExpenses(string filename): TextFile(filename,"IdExpense","Expense"){};
+    vector <Finance> getExpensesFromFile(int userId);
+    void addExpenseToFile(Finance expense);
     int getIdOfLastIdExpense();
 };
 #endif

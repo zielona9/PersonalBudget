@@ -2,7 +2,7 @@
 
 void Finance::setIdUser(int newIdUser)
 {
-   idUser=newIdUser;
+    idUser=newIdUser;
 }
 void Finance::setValue(double newValue)
 {
@@ -12,7 +12,7 @@ void Finance::setCategory(string newCategory)
 {
     category=newCategory;
 }
-void Finance::setDate(int newDate)
+void Finance::setDate(string newDate)
 {
     date=newDate;
 }
@@ -28,7 +28,15 @@ string Finance::getCategory()
 {
     return category;
 }
-int Finance::getDate()
+string Finance::getDate()
 {
     return date;
 }
+    void Finance::setIdFinance(int newIdFinance)
+    {
+        idFinance=newIdFinance;
+    }
+    int Finance::getIdFinance()
+    {
+        return idFinance;
+    }

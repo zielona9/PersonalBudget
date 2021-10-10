@@ -10,15 +10,26 @@ class Finance
     int idUser;
     double value;
     string category;
-    int date;
+    string date;
+    int idFinance;
 public:
+
+    struct sortByDate
+    {
+        inline bool operator() (Finance& firstDate, Finance& secondDate)
+        {
+            return (firstDate.getDate() < secondDate.getDate());
+        }
+    };
     void setIdUser(int newIdUser);
     void setValue(double newValue);
     void setCategory(string newCategory);
-    void setDate(int newDate);
+    void setDate(string newDate);
+    void setIdFinance(int newIdFinance);
+    int getIdFinance();
     int getIdUser();
     double getValue();
     string getCategory();
-    int getDate();
+    string getDate();
 };
 #endif

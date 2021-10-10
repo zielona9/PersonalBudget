@@ -6,15 +6,15 @@ using namespace std;
 
 class Date
 {
-int year;
-int month;
-int day;
+    int year;
+    int month;
+    int day;
 public:
-int getYear();
-int getMonth();
-int getDay();
-void setYear(int newYear);
-void setMonth(int newMonth);
-void setDay(int newDay);
+    int getYear();
+    int getMonth();
+    int getDay();
+    void setYear(int newYear);
+    void setMonth(int newMonth);
+    void setDay(int newDay);
 };
 #endif

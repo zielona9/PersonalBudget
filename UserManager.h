@@ -17,11 +17,11 @@ class UserManager
     int getNewUserId();
     User enterNewUserDetails();
 public:
-    UserManager()
+    UserManager(string fileNameWithUsers):fileWithUsers(fileNameWithUsers)
     {
         idOfLoggedInUser=0;
-        users=fileWithUsers.loadUsersFromFile();
-    }
+        users=fileWithUsers.getUsersFromFile();
+    };
     void setIdOfLoggedInUser(int userId);
     bool isUserLoggedIn();
 

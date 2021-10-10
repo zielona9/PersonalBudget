@@ -1,139 +1,130 @@
 #include "FinancesManager.h"
 
-
-
-int FinancesManager::addRevenue()
+Finance FinancesManager::getInformFromUser(string typeOfFinance)
 {
-    Revenue revenue;
+    Finance finance;
     char answer;
-    Date date;
-    string category;
-    string value;
+     Date date;
+    string category, value;
     DateManager dateManager;
-    cout<<"Does the income relate to today?[Y/N]";
+    bool correctDate=true;
+    do{
+    cout<<"Does the"<<typeOfFinance<<" relate to today? [Y/N] ";
     answer=SupportingMethods().loadCharacter();
     if(answer=='y'||answer=='Y')
     {
         date=dateManager.downloadCurrentDate();
+        correctDate=true;
     }
     else if(answer=='n'||answer=='N')
     {
         date=dateManager.downloadUserDate();
+        correctDate=true;
     }
     else
-   {
-       cout<<"No correct answer given"<<endl;
-       return 0;
-   }
-    cout<<"What does this income relate to?";
-    category=SupportingMethods().loadLine();
-    revenue.setCategory(category);
-    cout<<"What is the amount of income?";
-    value=SupportingMethods().loadLine();
-    lastIdRevenue=fileWithRevenue.getIdOfLastIdRevenue();
-    revenue.setValue(SupportingMethods().convertStringValueToDouble(value));
-    revenue.setIdRevenue(++lastIdRevenue);
-    revenue.setIdUser(USER_ID);
-    revenue.setDate(SupportingMethods().convertDateToInt(date));
-    revenues.push_back(revenue);
-    FileWithRevenue fileWithRevenue;
-    fileWithRevenue.addRevenueToFile(revenue);
-    return 1;
+      {
+         cout<<"No correct answer given"<<endl;
+         correctDate=false;
+      }
 
-}
-int FinancesManager::addExpense()
-{
-    Expense expense;
-    char answer;
-    Date date;
-    string category;
-    string value;
-    DateManager dateManager;
-    cout<<"Does the expense relate to today?[Y/N]";
-    answer=getchar();
-    cin.sync();
-    cin.clear();
-    if(answer=='y'||answer=='Y')
-    {
-        date=dateManager.downloadCurrentDate();
-    }
-    else if(answer=='n'||answer=='N')
-    {
-        date=dateManager.downloadUserDate();
-    }
-    else
-   {
-       cout<<"No correct answer given"<<endl;
-       return 0;
-   }
-   cin.sync();
-    cin.clear();
-    cout<<"What does this expense relate to?";
+    }while(correctDate!=true);
+
+       cout<<"What does this "<<typeOfFinance<<" relate to?";
     category=SupportingMethods().loadLine();
-    expense .setCategory(category);
-    cout<<"What is the amount of expense ?";
+    finance.setCategory(category);
+    cout<<"What is the amount of "<<typeOfFinance<<" ?";
     value=SupportingMethods().loadLine();
-    expense.setValue(SupportingMethods().convertStringValueToDouble(value));
-    lastIdExpense=fileWithExpenses.getIdOfLastIdExpense();
-    expense.setIdExpense (++lastIdExpense);
-    expense.setIdUser(USER_ID);
-    expense.setDate(SupportingMethods().convertDateToInt(date));
-    expenses.push_back(expense);
-    FileWithExpenses fileWithExpenses;
-    fileWithExpenses.addExpenseToFile(expense);
-    return 1;
+    finance.setIdUser(USER_ID);
+    finance.setDate(SupportingMethods().convertDateToString(date));
+    finance.setValue(SupportingMethods().convertStringValueToDouble(value));
+    return finance;
 }
-void FinancesManager::listRevenue(Date dateStart, Date dateEnd)
+
+void FinancesManager::addRevenue()
+{
+    Finance revenue;
+
+    revenue=getInformFromUser(" income ");
+    lastIdRevenue=fileWithRevenue.getIdOfLastIdRevenue();
+    revenue.setIdFinance(++lastIdRevenue);
+
+    revenues.push_back(revenue);
+
+    fileWithRevenue.addRevenueToFile(revenue);
+}
+void FinancesManager::addExpense()
+{
+    Finance expense;
+    expense=getInformFromUser("expense");
+    lastIdExpense=fileWithExpenses.getIdOfLastIdExpense();
+    expense.setIdFinance (++lastIdExpense);
+
+    expenses.push_back(expense);
+
+    fileWithExpenses.addExpenseToFile(expense);
+}
+double FinancesManager::listRevenue(Date dateStart, Date dateEnd)
 {
     Date date;
     DateManager dateManager;
-    //sort(revenues.begin(),revenues.end(),Revenue::Finance().getDate);
+    double sumRevenues=0;
+    sort(revenues.begin(),revenues.end(),Finance::sortByDate());
     for(int i=0; i<revenues.size();i++)
     {
-
         Date date;
-        date=SupportingMethods().convertIntToDate(expenses[i].getDate());
+        date=SupportingMethods().convertStringToDate(revenues[i].getDate());
         if(dateManager.isGivenRangeContaintGivenDate(date,dateStart,dateEnd)==true)
         {
-        cout<<revenues[i].getIdRevenue()<<endl;
-        cout<<revenues[i].getValue()<<endl;
-        cout<<revenues[i].getCategory()<<endl;
-        cout<<revenues[i].getDate()<<endl;
+        cout<<"IdRevenue: "<<revenues[i].getIdFinance()<<endl;
+        cout<<"Value: "<<revenues[i].getValue()<<endl;
+        cout<<"Category: "<<revenues[i].getCategory()<<endl;
+        cout<<"Date: "<<revenues[i].getDate()<<endl;
+        sumRevenues+=revenues[i].getValue();
         }
     }
-
+    return sumRevenues;
 }
 
-void FinancesManager::listExpense(Date dateStart, Date dateEnd)
+double FinancesManager::listExpense(Date dateStart, Date dateEnd)
 {
     Date date;
     DateManager dateManager;
-
-     sort(expenses.begin(),expenses.end(),Expense::compareExpenses);
+    double sumExpenses=0;
+     sort(expenses.begin(),expenses.end(),Finance::sortByDate());
       for(int i=0; i<expenses.size();i++)
     {
 
-        date=SupportingMethods().convertIntToDate(expenses[i].getDate());
+        date=SupportingMethods().convertStringToDate(expenses[i].getDate());
         if(dateManager.isGivenRangeContaintGivenDate(date,dateStart,dateEnd)==true)
         {
-        cout<<expenses[i].getIdExpense()<<endl;
-        cout<<expenses[i].getValue()<<endl;
-        cout<<expenses[i].getCategory()<<endl;
-        cout<<expenses[i].getDate()<<endl;
+        cout<<"IdExpense: "<<expenses[i].getIdFinance()<<endl;
+        cout<<"Value: "<<expenses[i].getValue()<<endl;
+        cout<<"Category: "<<expenses[i].getCategory()<<endl;
+        cout<<"Date: "<<expenses[i].getDate()<<endl;
+        sumExpenses+=expenses[i].getValue();
         }
     }
-
+    return sumExpenses;
+}
+void FinancesManager::summaryOfIncomesAndExpense(Date dateStart,Date dateEnd )
+{
+     double sumRevenues, sumExpenses;
+    sumRevenues=listRevenue(dateStart,dateEnd);
+    sumExpenses=listExpense(dateStart,dateEnd);
+    cout<<"Total revenue: "<<sumRevenues<<endl;
+    cout<<"Total expanses: "<<sumExpenses<<endl;
+    cout<<"Difference between revenue and expenses: "<<sumRevenues-sumExpenses<<endl;
 }
 void FinancesManager::currentMonthBalance()
 {
     DateManager dateManager;
     Date date, dateStart;
+
     date=dateManager.downloadCurrentDate();
     dateStart.setMonth(date.getMonth());
     dateStart.setDay(1);
     dateStart.setYear(date.getYear());
-    listExpense(dateStart,date);
-    listRevenue(dateStart,date);
+    summaryOfIncomesAndExpense(dateStart,date);
     system("pause");
 }
 void FinancesManager::balanceFromPreviousMonth()
@@ -157,8 +148,8 @@ void FinancesManager::balanceFromPreviousMonth()
     }
     dateStart.setDay(1);
     dateEnd.setDay(dateManager.numberOfDaysInMonth(dateEnd.getYear(),dateEnd.getMonth()));
-    listExpense(dateStart,dateEnd);
-    listRevenue(dateStart,dateEnd);
+   summaryOfIncomesAndExpense(dateStart,dateEnd);
+
     system("pause");
 }
 
@@ -171,11 +162,8 @@ void FinancesManager::balanceForSelectedPeriod()
     cout<<"Specify the end date of the balance sheet"<<endl;
     dateEnd=dateManager.downloadUserDate();
     if(dateManager.checkStartDateIsSmallerThanEndDate(dateStart,dateEnd)==true)
-    {
-    listExpense(dateStart,dateEnd);
-    listRevenue(dateStart,dateEnd);
+    summaryOfIncomesAndExpense(dateStart,dateEnd);
 
-    }
     else
         cout<<"Dates are in the wrong order"<<endl;
     system("pause");

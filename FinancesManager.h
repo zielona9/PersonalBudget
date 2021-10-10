@@ -19,27 +19,29 @@ using namespace std;
 
 class FinancesManager
 {
-    vector <Revenue> revenues;
-    vector <Expense> expenses;
-     const int USER_ID;
+    vector <Finance> revenues;
+    vector <Finance> expenses;
+    const int USER_ID;
     int lastIdRevenue;
     int lastIdExpense;
     FileWithExpenses fileWithExpenses;
     FileWithRevenue fileWithRevenue;
-    void listRevenue(Date dateStart, Date dateEnd);
-    void listExpense(Date dateStart, Date dateEnd);
+    double listRevenue(Date dateStart, Date dateEnd);
+    double listExpense(Date dateStart, Date dateEnd);
     bool isGivenRangeContaintGivenDate(Date dateGiven, Date dateStart, Date dateEnd);
-
+    void summaryOfIncomesAndExpense(Date dateStart,Date dateEnd );
+    Finance getInformFromUser(string typeOfFinance);
 public:
 
-    FinancesManager(int userId):USER_ID(userId)
+    FinancesManager(string nameFileWithRevenues, string nameFileWithExpenses, int userId)
+    :fileWithRevenue(nameFileWithRevenues),fileWithExpenses(nameFileWithExpenses),USER_ID(userId)
     {
-    expenses=fileWithExpenses.loadExpensesFromFile(userId);
-    revenues=fileWithRevenue.loadRevenuesFromFile(userId);
+    expenses=fileWithExpenses.getExpensesFromFile(userId);
+    revenues=fileWithRevenue.getRevenuesFromFile(userId);
     }
 
-    int addRevenue();
-    int addExpense();
+    void addRevenue();
+    void addExpense();
     void currentMonthBalance();
     void balanceFromPreviousMonth();
     void balanceForSelectedPeriod();

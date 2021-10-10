@@ -12,9 +12,14 @@ class PersonalBudget
 {
     UserManager userManager;
     FinancesManager *financesManager;
+
+    const string NAME_FILE_WITH_EXPENSES;
+    const string NAME_FILE_WITH_REVENUE;
+
     void userLogin();
 public:
-    PersonalBudget()
+    PersonalBudget(string fileNameWithUsers, string fileNameWithExpenses, string fileNameWithRevenue)
+    :userManager(fileNameWithUsers), NAME_FILE_WITH_EXPENSES(fileNameWithExpenses), NAME_FILE_WITH_REVENUE(fileNameWithRevenue)
     {
         financesManager=NULL;
     }

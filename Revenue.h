@@ -14,6 +14,5 @@ private:
 public:
     void setIdRevenue(int newIdRevenue);
     int getIdRevenue();
-
 };
 #endif

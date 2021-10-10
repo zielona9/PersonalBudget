@@ -106,17 +106,4 @@ Date SupportingMethods::convertStringToDate(string dateString)
     return date;
 
 }
- int SupportingMethods::convertDateToInt(Date date)
-  {
-      int dateInt;
-      dateInt=date.getYear()*10000+date.getMonth()*100+date.getDay();
-      return dateInt;
-  }
- Date SupportingMethods::convertIntToDate(int dateInt)
-  {
-      Date date;
-      date.setDay(dateInt%100);
-      date.setMonth(dateInt%10000-date.getDay());
-      date.setYear((dateInt-date.getDay()-date.getMonth())/10000);
-      return date;
-  }
+

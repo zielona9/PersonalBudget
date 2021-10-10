@@ -14,8 +14,7 @@ class Expense:public Finance
 {
     int idExpense;
 public:
-  void setIdExpense(int newIdExpense);
+    void setIdExpense(int newIdExpense);
     int getIdExpense();
-    bool compareExpenses (Expense* i,Expense* j);
 };
 #endif

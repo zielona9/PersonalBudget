@@ -4,22 +4,20 @@
 #include <vector>
 #include "Markup.h"
 #include "User.h"
+#include "TextFile.h"
 #include "SupportingMethods.h"
 using namespace std;
 
-class FileWithUsers
+class TextFile;
+class FileWithUsers : public TextFile
 {
-//string FILENAME_WITH_USERS;
-//string replaceUserDataWithDataLinesSeparatedByVerticalDashes(User user);
-//User getUserData(string singleUserDataSeparatedByVerticalDashes);
 
- public:
-//FileOfUsers(){
-    //FILENAME_WITH_USERS="User.xml";
-//}
-void addUserToFile(User user);
-//void saveAllUsersToFile();
-vector <User> loadUsersFromFile();
+public:
+    FileWithUsers(string filename): TextFile(filename,"","") { };
+
+    void addUserToFile(User user);
+    void changePasswordInFile(int userId, string password);
+    vector <User> getUsersFromFile();
 
 };
 
