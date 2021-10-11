@@ -167,4 +167,11 @@
 <Category>gafa</Category>
 <Date>2021-10-10</Date>
 </Expense>
+<Expense>
+<IdUser>2</IdUser>
+<IdExpense>24</IdExpense>
+<Value>34.20</Value>
+<Category>groccery</Category>
+<Date>2020-01-02</Date>
+</Expense>
 </Expenses>
